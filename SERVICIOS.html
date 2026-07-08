@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | Grupo Telvir</title>
+    <style>
+        /* RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --azul-corporativo: #0a192f;
+            --azul-oscuro: #050c16;
+            --rojo-seguridad: #d9381e;
+            --gris-fondo: #f4f6f9;
+            --gris-texto: #4a5568;
+            --blanco: #ffffff;
+        }
+
+        body {
+            background-color: var(--blanco);
+            color: var(--azul-corporativo);
+            line-height: 1.6;
+            padding-top: 60px; /* Espacio para el header fijo */
+        }
+
+        /* HEADER (Consistencia institucional) */
+        header {
+            background-color: var(--azul-corporativo);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--rojo-seguridad);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--rojo-seguridad);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        nav ul li a.active {
+            color: var(--rojo-seguridad);
+        }
+        .btn-header {
+            background-color: var(--rojo-seguridad);
+            color: var(--blanco);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-header:hover {
+            background-color: #b82c14;
+        }
+/* ======================================================== */
+/* ESTILOS HERO INTERNO SERVICIOS (Escritorio / Base)       */
+/* ======================================================== */
+.page-hero {
+    /* Fondo con degradado oscuro e imagen técnica/construcción */
+    background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(5, 12, 22, 0.9)), 
+                url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200') center/cover no-repeat;
+    height: 300px; /* Altura ideal en escritorio */
+    display: flex;
+    align-items: center;
+    color: var(--blanco);
+    padding: 0 20px;
+    margin-top: 0px; /* Evita que el Header fijo tape el contenido */
+}
+
+.page-hero-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Estilos de las migas de pan (Breadcrumbs) */
+.breadcrumbs {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a0aec0; /* Gris sutil para contraste */
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.page-hero h1 {
+    font-size: 38px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+/* ======================================================== */
+/* RESPONSIVE HERO INTERNO SERVICIOS (Móviles y Tablets)    */
+/* ======================================================== */
+@media (max-width: 768px) {
+    .page-hero {
+        height: 200px; /* Reducción de altura para optimizar el espacio en smartphones */
+        padding: 40px 20px 20px 20px; /* Ajuste de espaciados internos */
+    }
+
+    .breadcrumbs {
+        font-size: 11px; /* Más compacto en pantallas táctiles */
+        margin-bottom: 8px;
+    }
+
+    .page-hero h1 {
+        font-size: 28px; /* Reduce el tamaño del título para que quepa en una sola línea */
+    }
+}
+
+        /* SECCIONES GENÉRICAS */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+/* ======================================================== */
+/* ESTILOS SECCIÓN CENTRAL DE SERVICIOS (Escritorio / Base) */
+/* ======================================================== */
+.services-intro {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.services-intro p {
+    font-size: 18px;
+    color: var(--gris-texto);
+    line-height: 1.6;
+}
+
+/* Contenedor de cada Unidad de Negocio */
+.business-unit {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas perfectas */
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: center;
+}
+
+/* Truco de diseño: Intercalar imágenes y texto de forma automática en escritorio */
+.business-unit:nth-child(even) .unit-image {
+    order: 2; /* Envía la imagen a la derecha en los bloques pares (2 y 4) */
+}
+
+.business-unit:nth-child(even) .unit-text {
+    order: 1; /* Envía el texto a la izquierda en los bloques pares (2 y 4) */
+}
+
+.unit-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
+.unit-text .subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--rojo-seguridad);
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.unit-text h3 {
+    font-size: 28px;
+    color: var(--azul-corporativo);
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.unit-text p {
+    color: var(--gris-texto);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Lista interna de especialidades técnicas */
+.specs-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide las viñetas en 2 columnas */
+    gap: 12px;
+    padding: 0;
+}
+
+.specs-list li {
+    font-size: 14px;
+    color: var(--azul-corporativo);
+    font-weight: 600;
+    position: relative;
+    padding-left: 20px;
+}
+
+.specs-list li::before {
+    content: '✓'; /* Check de conformidad técnica */
+    position: absolute;
+    left: 0;
+    color: var(--rojo-seguridad);
+    font-weight: 900;
+}
+
+/* ======================================================== */
+/* RESPONSIVE SECCIÓN CENTRAL DE SERVICIOS                  */
+/* ======================================================== */
+
+/* Para Tablets y Laptops pequeñas (Menos de 992px) */
+@media (max-width: 992px) {
+    .business-unit {
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .unit-text h3 {
+        font-size: 24px;
+    }
+
+    .unit-image img {
+        height: 300px;
+    }
+}
+
+/* Para Celulares y Smartphones (Menos de 768px) */
+@media (max-width: 768px) {
+    .services-intro {
+        margin-bottom: 40px;
+    }
+
+    .services-intro p {
+        font-size: 16px;
+    }
+
+    .business-unit {
+        grid-template-columns: 1fr; /* Todo colapsa a 1 sola columna vertical */
+        gap: 25px;
+        margin-bottom: 50px;
+    }
+
+    /* Resetear el orden intercalado para que en celulares SIEMPRE aparezca primero la foto y luego el texto */
+    .business-unit:nth-child(even) .unit-image,
+    .business-unit:nth-child(even) .unit-text {
+        order: unset; 
+    }
+
+    .unit-image img {
+        height: 220px; /* Reducimos la altura de la imagen en celular para no cansar la vista */
+    }
+
+    .unit-text {
+        padding: 0 10px;
+    }
+
+    .unit-text h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    /* Las viñetas de especificaciones pasan a 1 sola columna en pantallas muy angostas */
+    .specs-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* ======================================================== */
+/* ESTILOS ESTÁNDARES OPERATIVOS (Escritorio / Base)        */
+/* ======================================================== */
+.value-added-section {
+    background-color: var(--azul-corporativo); /* Fondo oscuro e imponente */
+    padding: 80px 20px;
+}
+
+/* Reutilizamos y adaptamos las clases internas de texto para fondo oscuro */
+.value-added-section .services-intro h2 {
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+/* Línea decorativa roja centrada */
+.value-added-section .services-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--rojo-seguridad);
+}
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+    gap: 30px;
+}
+
+.value-card {
+    background-color: rgba(255, 255, 255, 0.05); /* Cajas oscuras semitransparentes */
+    padding: 35px 30px;
+    border-top: 4px solid var(--rojo-seguridad); /* Detalle de seguridad superior */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Misma altura simétrica para todas las tarjetas */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.08); /* Brillo sutil al pasar el mouse */
+}
+
+.value-card h4 {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--blanco);
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.value-card p {
+    font-size: 14px;
+    color: #ccd6f6; /* Gris claro de alta legibilidad sobre fondos oscuros */
+    line-height: 1.6;
+}
+
+/* ======================================================== */
+/* RESPONSIVE ESTÁNDARES OPERATIVOS                         */
+/* ======================================================== */
+
+/* Para Tablets (Menos de 992px) */
+@media (max-width: 992px) {
+    .value-grid {
+        gap: 20px; /* Reduce ligeramente el espacio muerto */
+    }
+    
+    .value-card {
+        padding: 25px; /* Optimiza los espacios internos */
+    }
+}
+
+/* Para Celulares y Smartphones (Menos de 768px) */
+@media (max-width: 768px) {
+    .value-added-section {
+        padding: 50px 20px; /* Ajuste del bloque general */
+    }
+
+    .value-added-section .services-intro h2 {
+        font-size: 24px; /* Ajuste del tamaño del título para móviles */
+    }
+
+    .value-grid {
+        grid-template-columns: 1fr; /* Colapsa a 1 sola columna vertical */
+        gap: 20px;
+    }
+
+    .value-card {
+        border-top: none;
+        border-left: 4px solid var(--rojo-seguridad); /* En celulares se ve más ordenado un borde lateral */
+    }
+}
+
+ /* ========================================== */
+/* ESTILOS BASE DEL FOOTER (Computadora)     */
+/* ========================================== */
+.main-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding-top: 50px;
+    border-top: 3px solid var(--rojo-seguridad);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 20px 45px 20px;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.footer-column p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.footer-services {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-services li {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #cccccc;
+}
+
+.footer-phone {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 15px 0;
+}
+
+.footer-bottom-bar {
+    background-color: #b82c14; /* Tu azul corporativo */
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ========================================== */
+/* ADAPTACIÓN PARA MÓVILES (Celulares)        */
+/* ========================================== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        gap: 35px;             /* Añade separación segura entre cada bloque */
+        text-align: center;    /* Centra los textos para que se vea ordenado en celular */
+        padding-bottom: 35px;
+    }
+
+    .footer-services {
+        display: inline-block; /* Permite alinear la lista en base al centro */
+        text-align: left;      /* Mantiene las viñetas alineadas a la izquierda */
+    }
+
+    .footer-logo img {
+        margin: 15px auto 0 auto; /* Centra el logotipo en móviles */
+        display: block;
+    }
+}
+/* BOTÓN FLOTANTE WHATSAPP CORREGIDO */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #ffffff !important;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .whatsapp-btn i {
+            font-size: 32px !important;
+            line-height: 1;
+            display: block;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+
+        /* Ocultaciones globales por defecto (Para computadoras) */
+        .mobile-only-btn {
+            display: none !important;
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+
+/* ======================================================== */
+        /* RESPONSIVE GENERAL COMBINADO                             */
+        /* ======================================================== */
+
+        /* REGLAS PARA TABLETS Y MÓVILES (Menos de 968px) */
+        @media (max-width: 968px) {
+            /* --- Tus estilos existentes de Contacto --- */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .info-panel {
+                padding: 30px;
+            }
+
+            /* --- NUEVO: Adaptación de Header y Menú Hamburguesa --- */
+.nav-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                height: 70px;
+            }
+
+            .menu-toggle {
+                display: block !important;
+                background: none !important;
+                border: none !important;
+                color: #ffffff !important;
+                font-size: 32px !important;
+                cursor: pointer;
+                z-index: 1002;
+                margin: 0 !important;
+                padding: 0 !important;
+                line-height: 1 !important;
+            }
+
+            nav {
+                display: block !important;
+                position: fixed;
+                top: 0;
+                right: -100%; 
+                width: 75%;
+                height: 100vh;
+                background-color: var(--azul-corporativo);
+                padding: 100px 30px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                z-index: 1001;
+            }
+
+            nav.active {
+                right: 0 !important;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column !important;
+                align-items: flex-start;
+                gap: 25px;
+                list-style: none;
+                padding: 0;
+            }
+
+            nav ul li a {
+                color: #ffffff;
+                font-size: 20px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Control inteligente de botones de cotización */
+            .desktop-only-btn {
+                display: none !important;
+            }
+
+            .mobile-only-btn {
+                display: block !important;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .mobile-only-btn .btn-premium {
+                display: block;
+                text-align: center;
+                width: 100%;
+                padding: 12px;
+                background-color: var(--rojo-seguridad);
+                color: #ffffff;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+
+/* REGLAS PARA CELULARES PEQUEÑOS (Menos de 768px) */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 35px;
+                text-align: center;
+                padding-bottom: 35px;
+            }
+
+            .footer-services {
+                display: inline-block;
+                text-align: left;
+            }
+
+            .footer-logo img {
+                margin: 15px auto 0 auto;
+                display: block;
+            }
+
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .whatsapp-btn i {
+                font-size: 26px !important;
+            }
+        }
+
+        /* REGLAS PARA PANTALLAS CHICAS (Menos de 576px) */
+        @media (max-width: 576px) {
+            .advanced-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .form-panel h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">GRUPO TELVIR<span>.</span></a>
+        
+        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="NOSOTROS.html">Nosotros</a></li>
+                <li><a href="SERVICIOS.html">Servicios</a></li>
+                <li><a href="PROYECTOS.html">Proyectos</a></li>
+                <li><a href="CONTACTO.html">Contacto</a></li>
+                <li class="mobile-only-btn"><a href="CONTACTO.html" class="btn-premium">Cotizar Proyecto</a></li>
+            </ul>
+        </nav>
+
+        <a href="CONTACTO.html" class="btn-header desktop-only-btn">Cotizar Proyecto</a>
+    </div>
+    </header>
+
+    <!-- HERO INTERNO -->
+    <div class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumbs">Operaciones &nbsp;/&nbsp; Especialidades</div>
+            <h1>Nuestros Servicios</h1>
+        </div>
+    </div>
+
+    <!-- SECCIÓN CENTRAL DE SERVICIOS -->
+    <section>
+        <div class="container">
+            
+            <div class="services-intro">
+                                <p>Desarrollamos y ejecutamos proyectos de ingeniería y construcción con calidad, innovación y eficiencia, brindando soluciones seguras y sostenibles que generan confianza y valor para nuestros clientes.</p>
+            </div>
+
+            <!-- UNIDAD 1: INFRAESTRUCTURA MÉDICA -->
+            <div class="business-unit">
+                <div class="unit-image">
+                    <img src="images/medico-servicios.png" alt="Infraestructura Médica Telviri">
+                </div>
+                <div class="unit-text">
+                    <span class="subtitle">Especialidad Alta Complejidad</span>
+                    <h3>Infraestructura Médica y Hospitalaria</h3>
+                    <p>Ejecutamos proyectos para el sector salud bajo rigurosas normativas técnicas. Nos encargamos del vaciado de estructuras de soporte complejo (columnas, vigas y losas) y de implementar acabados arquitectónicos específicos exigidos por las entidades reguladoras médicas.</p>
+                    <ul class="specs-list">
+                        <li>Clínicas Especializadas</li>
+                        <li>Centros Médicos Integrales</li>
+                        <li>Policlínicos y Consultorios</li>
+                        <li>Acabados Asépticos y Técnicos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- UNIDAD 2: COMPLEJOS EDUCATIVOS -->
+            <div class="business-unit">
+                <div class="unit-image">
+                    <img src="images/educativo-servicios.jpg" alt="Infraestructura Educativa Telviri">
+                </div>
+                <div class="unit-text">
+                    <span class="subtitle">Desarrollo Institucional</span>
+                    <h3>Complejos Educativos y Campus</h3>
+                    <p>Estructuramos espacios educativos de alto tránsito diseñados para resistir el paso del tiempo y garantizar la seguridad estructural absoluta de los alumnos. Optimizamos los procesos constructivos en campo para cumplir con los plazos exactos de entrega antes del inicio de los ciclos escolares.</p>
+                    <ul class="specs-list">
+                        <li>Colegios y Pabellones</li>
+                        <li>Vaciado de Losas de Gran Envergadura</li>
+                        <li>Reforzamiento Estructural</li>
+                        <li>Áreas Comunes e Institucionales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- UNIDAD 3: EDIFICACIONES RESIDENCIALES -->
+            <div class="business-unit">
+                <div class="unit-image">
+                    <img src="images/contruccion-servicios.jpg" alt="Edificaciones Multifamiliares Telviri">
+                </div>
+                <div class="unit-text">
+                    <span class="subtitle">Ingeniería Urbana</span>
+                    <h3>Viviendas y Proyectos Multifamiliares</h3>
+                    <p>Abordamos la edificación residencial multifamiliar e inmobiliaria de alta densidad. Contamos con amplia experiencia técnica en el desarrollo de cimentaciones profundas, construcción de sótanos mediante muros pantalla y acabados de líneas contemporáneas sofisticadas.</p>
+                    <ul class="specs-list">
+                        <li>Edificios de Departamentos</li>
+                        <li>Sistemas de Townhouses</li>
+                        <li>Sótanos y Muros Pantalla</li>
+                        <li>Gestión de Acabados Finales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- UNIDAD 4: INGENIERÍA Y CONSULTORÍA -->
+            <div class="business-unit">
+                <div class="unit-image">
+                    <img src="images/nosotros-texto.png" alt="Consultoría e Ingeniería Telviri">
+                </div>
+                <div class="unit-text">
+                    <span class="subtitle">Etapa Cero e Ingeniería</span>
+                    <h3>Consultoría, Diseño y Supervisión</h3>
+                    <p>Ofrecemos soporte integral desde el planeamiento. Desarrollamos la ingeniería de detalle, compatibilización de planos arquitectónicos y estructurales, estudios topográficos y la supervisión técnica en obra para garantizar cero desviaciones presupuestarias.</p>
+                    <ul class="specs-list">
+                        <li>Desarrollo de Planos Estructurales</li>
+                        <li>Topografía y Replanteo</li>
+                        <li>Supervisión Independiente de Obra</li>
+                        <li>Proyectos de Prefactibilidad</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: ESTÁNDARES OPERATIVOS (Estilo Flesan: Destacar por qué elegirlos) -->
+    <section class="value-added-section">
+        <div class="container">
+            <div class="services-intro" style="margin-bottom: 40px;">
+                <h2 style="color: var(--blanco);">Garantía Operativa del Grupo Telvir</h2>
+                <p style="color: #ccd6f6;">Nuestros servicios se ejecutan bajo metodologías que cuidan el negocio y la inversión de nuestros socios comerciales.</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <h4>Estricto Control de Calidad</h4>
+                    <p>Cada lote de concreto, acero y material estructural que ingresa a nuestras obras es validado bajo normativas estrictas para certificar su resistencia y durabilidad constructiva.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Cumplimiento de Plazos</h4>
+                    <p>Estructuramos cronogramas de obra realistas respaldados por metodologías de control que minimizan los tiempos muertos y evitan sobrecostos por retraso.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Eficiencia Energética</h4>
+                    <p>Incorporamos criterios modernos de construcción sostenible en la selección de materiales y procesos para reducir el impacto y optimizar el consumo de recursos de la edificación final.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>GRUPO TELVI<span>.</span></h3>
+            <p>Hacemos realidad los proyectos de construcción para empresas, promotores y proyectos propios, generando la máxima confianza y optimizando su rentabilidad mediante ingeniería de valor y altos estándares de calidad.</p>
+            <div class="footer-logo">
+                <img src="logo.png" alt="Grupo Telvi Logo" onerror="this.style.display='none';">
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>NUESTROS SERVICIOS</h3>
+            <ul class="footer-services">
+                <li>• Arquitectura e Ingeniería</li>
+                <li>• Topografía</li>
+                <li>• Obras Civiles</li>
+                <li>• Estructuras Metálicas</li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>CONTACTO</h3>
+            <p>Si tiene alguna pregunta, cotización o necesita asesoría en su proyecto, no dude en ponerse en contacto con nuestro equipo.</p>
+            <p class="footer-phone">📞 (+51) 998 856 731</p>
+        </div> </div> <div class="footer-bottom-bar">
+        <p>Grupo Telvi © 2026 • Todos los derechos reservados</p>
+    </div>
+</footer>
+<a href="https://wa.me/51998856731?text=Hola%20Grupo%20Telvi,%20solicito%20información%20sobre%20sus%20servicios%20de%20construcción" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                menuToggle.innerHTML = '✕';
+            } else {
+                menuToggle.innerHTML = '☰';
+            }
+        });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+            });
+        });
+    }
+</script>
+</body>
+</html>

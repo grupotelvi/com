@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Grupo Telvir</title>
+    <style>
+        /* RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --azul-corporativo: #0a192f;
+            --azul-oscuro: #050c16;
+            --rojo-seguridad: #d9381e;
+            --gris-fondo: #f4f6f9;
+            --gris-texto: #4a5568;
+            --blanco: #ffffff;
+        }
+
+        body {
+            background-color: var(--blanco);
+            color: var(--azul-corporativo);
+            line-height: 1.6;
+            padding-top: 60px; /* Espacio para el header fijo */
+        }
+
+        /* HEADER (Idéntico al Home para consistencia) */
+        header {
+            background-color: var(--azul-corporativo);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--rojo-seguridad);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--rojo-seguridad);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        nav ul li a.active {
+            color: var(--rojo-seguridad);
+        }
+        .btn-header {
+            background-color: var(--rojo-seguridad);
+            color: var(--blanco);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-header:hover {
+            background-color: #b82c14;
+        }
+/* ======================================================== */
+/* ESTILOS HERO INTERNO (Escritorio / Base)                */
+/* ======================================================== */
+.page-hero {
+    /* Fondo con degradado oscuro e imagen técnica/construcción */
+    background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(5, 12, 22, 0.9)), 
+                url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200') center/cover no-repeat;
+    height: 300px; /* Altura ideal en computadoras */
+    display: flex;
+    align-items: center;
+    color: var(--blanco);
+    padding: 80px 20px;
+    margin-top: 0px; /* Espacio para que no lo tape el Header fijo */
+}
+
+.page-hero-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Estilos de las migas de pan (Breadcrumbs) */
+.breadcrumbs {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a0aec0; /* Gris sutil para contraste */
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.page-hero h1 {
+    font-size: 38px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+/* ======================================================== */
+/* RESPONSIVE HERO INTERNO (Móviles y Tablets)              */
+/* ======================================================== */
+@media (max-width: 768px) {
+    .page-hero {
+        height: 200px; /* Reducimos la altura en celulares para optimizar el espacio */
+        padding: 40px 20px 20px 20px; /* Ajuste de rellenos internos */
+    }
+
+    .breadcrumbs {
+        font-size: 11px; /* Un poco más compacto en pantallas táctiles */
+        margin-bottom: 8px;
+    }
+
+    .page-hero h1 {
+        font-size: 28px; /* El tamaño de la fuente baja para que títulos largos entren bien */
+    }
+}
+        /* SECCIONES GENÉRICAS */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+/* ======================================================== */
+/* ESTILOS INTRODUCCIÓN Y PROPÓSITO (Escritorio / Base)     */
+/* ======================================================== */
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 50px; /* Espaciado amplio entre el bloque izquierdo y derecho */
+    align-items: flex-start;
+}
+
+.intro-left h2 {
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--azul-corporativo);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Línea roja decorativa debajo del título */
+.intro-left h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--rojo-seguridad);
+}
+
+.highlight-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--rojo-seguridad);
+    margin-top: 20px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.intro-left p, .intro-right p {
+    color: var(--gris-texto);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* Evita el margen extra en el último párrafo */
+.intro-right p:last-child {
+    margin-bottom: 0;
+}
+
+/* ======================================================== */
+/* RESPONSIVE INTRODUCCIÓN Y PROPÓSITO                      */
+/* ======================================================== */
+
+/* Para Tablets y Celulares (Menos de 968px) */
+@media (max-width: 968px) {
+    .intro-grid {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        gap: 25px; /* Reduce el espacio muerto entre bloques */
+    }
+
+    .intro-left h2 {
+        font-size: 26px; /* Reducción ligera del título para pantallas medianas */
+    }
+
+    .highlight-text {
+        font-size: 16px; /* Ajuste sutil del texto destacado */
+    }
+}
+
+/* Para Celulares pequeños (Menos de 576px) */
+@media (max-width: 576px) {
+    .intro-left h2 {
+        font-size: 24px;
+    }
+}
+
+/* ======================================================== */
+/* ESTILOS LÍNEA DE TIEMPO / HITOS (Escritorio / Base)      */
+/* ======================================================== */
+.timeline-section {
+    padding: 80px 20px;
+    background-color: var(--gris-fondo);
+}
+
+.section-subtitle {
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--azul-corporativo);
+}
+
+.section-subtitle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--rojo-seguridad);
+}
+
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+    gap: 30px;
+}
+
+.timeline-card {
+    background-color: var(--blanco);
+    padding: 35px 30px;
+    border-top: 4px solid var(--azul-corporativo);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Misma altura para todas las tarjetas */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+    border-top-color: var(--rojo-seguridad);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-year {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--rojo-seguridad);
+    line-height: 1;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.timeline-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--azul-corporativo);
+}
+
+.timeline-card p {
+    font-size: 14px;
+    color: var(--gris-texto);
+    line-height: 1.6;
+}
+
+/* ======================================================== */
+/* RESPONSIVE LÍNEA DE TIEMPO / HITOS                       */
+/* ======================================================== */
+
+/* Para Tablets y Celulares (Menos de 912px) */
+@media (max-width: 912px) {
+    .timeline-grid {
+        grid-template-columns: 1fr; /* Colapsa a 1 sola columna hacia abajo */
+        gap: 25px;
+    }
+
+    .timeline-card {
+        padding: 30px 25px;
+        /* Cambiamos el borde superior por uno izquierdo en móviles para simular el trazo de la línea de tiempo */
+        border-top: none;
+        border-left: 4px solid var(--azul-corporativo);
+    }
+
+    .timeline-card:hover {
+        border-left-color: var(--rojo-seguridad);
+        transform: translateX(5px); /* En móviles el efecto de hover se desplaza sutilmente a la derecha */
+    }
+
+    .timeline-year {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Ajustes adicionales para Celulares pequeños (Menos de 576px) */
+@media (max-width: 576px) {
+    .timeline-section {
+        padding: 50px 20px;
+    }
+
+    .section-subtitle {
+        font-size: 24px;
+    }
+}
+
+/* ======================================================== */
+/* ESTILOS CAPACIDAD TÉCNICA (Escritorio / Base)            */
+/* ======================================================== */
+.team-section {
+    padding: 80px 20px;
+    background-color: var(--blanco);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* El texto toma un poco más de espacio que la foto */
+    gap: 50px;
+    align-items: center;
+}
+
+.team-text h2 {
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--azul-corporativo);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.team-text h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--rojo-seguridad);
+}
+
+.team-text p {
+    color: var(--gris-texto);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* Estilos profesionales para la lista con viñetas */
+.team-text ul {
+    list-style: none; /* Quitamos los puntos por defecto */
+    margin-top: 20px;
+}
+
+.team-text ul li {
+    font-size: 15px;
+    color: var(--azul-corporativo);
+    font-weight: 600;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px; /* Espacio para la viñeta personalizada */
+}
+
+/* Viñeta personalizada: un cuadradito o check de color rojo corporativo */
+.team-text ul li::before {
+    content: '▪'; 
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: var(--rojo-seguridad);
+    font-size: 20px;
+}
+
+.team-image img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ======================================================== */
+/* RESPONSIVE CAPACIDAD TÉCNICA                             */
+/* ======================================================== */
+
+/* Para Tablets y Celulares (Menos de 968px) */
+@media (max-width: 968px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* Colapsa a una sola columna vertical */
+        gap: 40px;
+    }
+
+    /* Forzamos a que el texto siempre quede arriba y la imagen abajo en la pantalla */
+    .team-text {
+        order: 1;
+    }
+    
+    .team-image {
+        order: 2;
+    }
+
+    .team-text h2 {
+        font-size: 26px; /* Reducción de título en pantallas medianas */
+    }
+}
+
+/* Para Celulares pequeños (Menos de 576px) */
+@media (max-width: 576px) {
+    .team-section {
+        padding: 50px 20px; /* Reducción de márgenes generales */
+    }
+
+    .team-text h2 {
+        font-size: 24px;
+    }
+
+    .team-text ul li {
+        font-size: 14px; /* Ajuste sutil del tamaño de lista para que no rompa en muchas líneas */
+    }
+}
+
+/* ======================================================== */
+/* ESTILOS ESTRATEGIA CORPORATIVA (Escritorio / Base)       */
+/* ======================================================== */
+.strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas simétricas */
+    gap: 0; /* Sin separación para que se unan limpiamente como bloques corporativos */
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05); /* Sombra suave para todo el conjunto */
+}
+
+.strategy-card {
+    background-color: var(--gris-fondo);
+    color: var(--azul-corporativo);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; /* Asegura que ambas tarjetas tengan exactamente la misma altura */
+    border-top: 5px solid var(--azul-corporativo);
+    transition: transform 0.3s ease;
+}
+
+/* Tarjeta Visión (Bloque Oscuro Invertido) */
+.strategy-card.dark {
+    background-color: var(--azul-corporativo);
+    color: var(--blanco);
+    border-top-color: var(--rojo-seguridad);
+    
+}
+
+.strategy-card h3 {
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.strategy-card p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Color de texto optimizado para el párrafo del bloque oscuro */
+.strategy-card.dark p {
+    color: #ccd6f6; 
+}
+
+/* ======================================================== */
+/* RESPONSIVE ESTRATEGIA CORPORATIVA                        */
+/* ======================================================== */
+
+/* Para Tablets y Celulares (Menos de 768px) */
+@media (max-width: 768px) {
+    .strategy-grid {
+        grid-template-columns: 1fr; /* Cambia a una sola columna vertical */
+    }
+
+    .strategy-card {
+        padding: 40px 30px; /* Reducción de relleno interno para pantallas más angostas */
+        border-top: none;
+        /* En móvil, cambiamos a bordes laterales para dar dinamismo */
+        border-left: 5px solid var(--azul-corporativo); 
+    }
+
+    .strategy-card.dark {
+        border-left-color: var(--rojo-seguridad);
+    }
+}
+        .main-footer {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 50px;
+}
+/* ========================================== */
+/* ESTILOS BASE DEL FOOTER (Computadora)     */
+/* ========================================== */
+.main-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding-top: 50px;
+    border-top: 3px solid var(--rojo-seguridad);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 20px 45px 20px;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.footer-column p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.footer-services {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-services li {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #cccccc;
+}
+
+.footer-phone {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 15px 0;
+}
+
+.footer-bottom-bar {
+    background-color: #b82c14; /* Tu azul corporativo */
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ========================================== */
+/* ADAPTACIÓN PARA MÓVILES (Celulares)        */
+/* ========================================== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        gap: 35px;             /* Añade separación segura entre cada bloque */
+        text-align: center;    /* Centra los textos para que se vea ordenado en celular */
+        padding-bottom: 35px;
+    }
+
+    .footer-services {
+        display: inline-block; /* Permite alinear la lista en base al centro */
+        text-align: left;      /* Mantiene las viñetas alineadas a la izquierda */
+    }
+
+    .footer-logo img {
+        margin: 15px auto 0 auto; /* Centra el logotipo en móviles */
+        display: block;
+    }
+}
+/* BOTÓN FLOTANTE WHATSAPP CORREGIDO */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #ffffff !important;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .whatsapp-btn i {
+            font-size: 32px !important;
+            line-height: 1;
+            display: block;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+
+        /* Ocultaciones globales por defecto (Para computadoras) */
+        .mobile-only-btn {
+            display: none !important;
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+
+/* ======================================================== */
+        /* RESPONSIVE GENERAL COMBINADO                             */
+        /* ======================================================== */
+
+        /* REGLAS PARA TABLETS Y MÓVILES (Menos de 968px) */
+        @media (max-width: 968px) {
+            /* --- Tus estilos existentes de Contacto --- */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .info-panel {
+                padding: 30px;
+            }
+
+            /* --- NUEVO: Adaptación de Header y Menú Hamburguesa --- */
+.nav-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                height: 70px;
+            }
+
+            .menu-toggle {
+                display: block !important;
+                background: none !important;
+                border: none !important;
+                color: #ffffff !important;
+                font-size: 32px !important;
+                cursor: pointer;
+                z-index: 1002;
+                margin: 0 !important;
+                padding: 0 !important;
+                line-height: 1 !important;
+            }
+
+            nav {
+                display: block !important;
+                position: fixed;
+                top: 0;
+                right: -100%; 
+                width: 75%;
+                height: 100vh;
+                background-color: var(--azul-corporativo);
+                padding: 100px 30px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                z-index: 1001;
+            }
+
+            nav.active {
+                right: 0 !important;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column !important;
+                align-items: flex-start;
+                gap: 25px;
+                list-style: none;
+                padding: 0;
+            }
+
+            nav ul li a {
+                color: #ffffff;
+                font-size: 20px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Control inteligente de botones de cotización */
+            .desktop-only-btn {
+                display: none !important;
+            }
+
+            .mobile-only-btn {
+                display: block !important;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .mobile-only-btn .btn-premium {
+                display: block;
+                text-align: center;
+                width: 100%;
+                padding: 12px;
+                background-color: var(--rojo-seguridad);
+                color: #ffffff;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+
+/* REGLAS PARA CELULARES PEQUEÑOS (Menos de 768px) */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 35px;
+                text-align: center;
+                padding-bottom: 35px;
+            }
+
+            .footer-services {
+                display: inline-block;
+                text-align: left;
+            }
+
+            .footer-logo img {
+                margin: 15px auto 0 auto;
+                display: block;
+            }
+
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .whatsapp-btn i {
+                font-size: 26px !important;
+            }
+        }
+
+        /* REGLAS PARA PANTALLAS CHICAS (Menos de 576px) */
+        @media (max-width: 576px) {
+            .advanced-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .form-panel h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">GRUPO TELVIR<span>.</span></a>
+        
+        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="NOSOTROS.html">Nosotros</a></li>
+                <li><a href="SERVICIOS.html">Servicios</a></li>
+                <li><a href="PROYECTOS.html">Proyectos</a></li>
+                <li><a href="CONTACTO.html">Contacto</a></li>
+                <li class="mobile-only-btn"><a href="CONTACTO.html" class="btn-premium">Cotizar Proyecto</a></li>
+            </ul>
+        </nav>
+
+        <a href="CONTACTO.html" class="btn-header desktop-only-btn">Cotizar Proyecto</a>
+    </div>
+    </header>
+
+    <!-- HERO INTERNO -->
+    <div class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumbs">Conócenos &nbsp;/&nbsp; Corporativo</div>
+            <h1>Nuestra Empresa</h1>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 1: INTRODUCCIÓN Y PROPÓSITO -->
+    <section>
+        <div class="container intro-grid">
+            <div class="intro-left">
+                <h2>Trayectoria Avanzada en Ingeniería</h2>
+                <p class="highlight-text">Comprometidos con la excelencia técnica desde nuestros orígenes.</p>
+                <p>En <strong>Grupo Telvir</strong> entendemos la construcción como una disciplina de alta precisión, donde el cumplimiento riguroso de normativas y plazos constituye el eje central de nuestras operaciones.</p>
+            </div>
+            <div class="intro-right">
+                <p>Nuestra organización ha consolidado su posición en el mercado peruano ejecutando proyectos de alta exigencia arquitectónica y estructural para sectores clave como la salud, educación y edificaciones privadas complejas.</p>
+                <p>Alineados con las mejores prácticas de ingeniería civil, implementamos materiales evaluados bajo los más altos estándares de calidad, asegurando que cada metro cuadrado construido responda a criterios estrictos de durabilidad, seguridad estructural y eficiencia energética.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: LÍNEA DE TIEMPO / HITOS (Estilo Flesan) -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-subtitle">Hitos Fundacionales</h2>
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <span class="timeline-year">2006</span>
+                    <h3>Fundación Estratégica</h3>
+                    <p>Iniciamos operaciones en el Perú orientados a resolver necesidades de infraestructura técnica y consultoría de ingeniería civil con un fuerte enfoque en calidad de materiales.</p>
+                </div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2015</span>
+                    <h3>Consolidación de Sectores</h3>
+                    <p>Expandimos nuestra capacidad técnica hacia edificaciones especializadas de alta complejidad, abarcando infraestructura hospitalaria y centros educativos modernos.</p>
+                </div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2026</span>
+                    <h3>Construcción Sostenible</h3>
+                    <p>Evolucionamos nuestros procesos de obra hacia la optimización energética y tecnológica, maximizando la eficiencia en plazos de ejecución.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: CAPACIDAD TÉCNICA -->
+    <section class="team-section">
+        <div class="container team-grid">
+            <div class="team-text">
+                <h2>Capacidad Multidisciplinaria</h2>
+                <p>El núcleo del Grupo Telviri reside en la solidez de su capital humano. Al igual que los referentes del gran sector constructivo, estructuramos nuestras operaciones mediante frentes especializados dirigidos por profesionales líderes.</p>
+                <p>Contamos con un equipo altamente calificado que cubre todas las etapas críticas del proyecto:</p>
+                <ul>
+                    <li>Ingenieros Civiles y Estructurales de Campo</li>
+                    <li>Arquitectos Especialistas en Diseño de Interiores y Complejidad Médica</li>
+                    <li>Especialistas en Topografía y Movimiento de Tierras</li>
+                    <li>Supervisores de Seguridad y Aseguramiento de Calidad en Obra</li>
+                </ul>
+            </div>
+            <div class="team-image">
+                <img src="images/nosotros-texto.png" alt="Capacidad Técnica Telviri">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: ESTRATEGIA CORPORATIVA (Misión y Visión Flesan Style) -->
+    <section>
+        <div class="container strategy-grid">
+            <div class="strategy-card">
+                <h3>Misión</h3>
+                <p>Desarrollar y ejecutar proyectos de ingeniería y construcción que superen las expectativas técnicas de nuestros clientes, garantizando un control riguroso en los materiales, optimización de recursos energéticos y, fundamentalmente, cumpliendo de manera estricta los plazos de entrega establecidos.</p>
+            </div>
+            <div class="strategy-card dark">
+                <h3>Visión</h3>
+                <p>Consolidarnos hacia el 2035 como una de las firmas constructoras e ingenieriles referentes a nivel nacional en edificaciones especializadas, siendo reconocidos por nuestra solidez técnica, capacidad de respuesta ante desafíos complejos y el desarrollo de obras con alto estándar de sostenibilidad urbana.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>GRUPO TELVI<span>.</span></h3>
+            <p>Hacemos realidad los proyectos de construcción para empresas, promotores y proyectos propios, generando la máxima confianza y optimizando su rentabilidad mediante ingeniería de valor y altos estándares de calidad.</p>
+            <div class="footer-logo">
+                <img src="logo.png" alt="Grupo Telvi Logo" onerror="this.style.display='none';">
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>NUESTROS SERVICIOS</h3>
+            <ul class="footer-services">
+                <li>• Arquitectura e Ingeniería</li>
+                <li>• Topografía</li>
+                <li>• Obras Civiles</li>
+                <li>• Estructuras Metálicas</li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>CONTACTO</h3>
+            <p>Si tiene alguna pregunta, cotización o necesita asesoría en su proyecto, no dude en ponerse en contacto con nuestro equipo.</p>
+            <p class="footer-phone">📞 (+51) 998 856 731</p>
+        </div> </div> <div class="footer-bottom-bar">
+        <p>Grupo Telvi © 2026 • Todos los derechos reservados</p>
+    </div>
+</footer>
+<a href="https://wa.me/51998856731?text=Hola%20Grupo%20Telvi,%20solicito%20información%20sobre%20sus%20servicios%20de%20construcción" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                menuToggle.innerHTML = '✕';
+            } else {
+                menuToggle.innerHTML = '☰';
+            }
+        });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+            });
+        });
+    }
+</script>
+</body>
+</html>
