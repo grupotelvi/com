@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Detalle | Grupo Telvir</title>
+    <style>
+        /* RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --azul-corporativo: #0a192f;
+            --azul-oscuro: #050c16;
+            --rojo-seguridad: #d9381e;
+            --gris-fondo: #f4f6f9;
+            --gris-texto: #4a5568;
+            --blanco: #ffffff;
+        }
+
+        body {
+            background-color: var(--blanco);
+            color: var(--azul-corporativo);
+            line-height: 1.6;
+            padding-top: 60px; /* Espacio para el header fijo */
+        }
+
+        /* HEADER (Idéntico al Home para consistencia) */
+        header {
+            background-color: var(--azul-corporativo);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--rojo-seguridad);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--rojo-seguridad);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        nav ul li a.active {
+            color: var(--rojo-seguridad);
+        }
+        .btn-header {
+            background-color: var(--rojo-seguridad);
+            color: var(--blanco);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-header:hover {
+            background-color: #b82c14;
+        }
+
+/* ======================================================== */
+/* ESTILOS HERO DEL PROYECTO (Escritorio / Base)            */
+/* ======================================================== */
+.project-hero {
+    /* Fondo con degradado oscuro e imagen técnica/construcción */
+    background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(5, 12, 22, 0.9)), 
+                url('images/zaguan-inicio.jpeg') center/cover no-repeat;
+    height: 350px; /* Altura destacada para fichas de obra */
+    display: flex;
+    align-items: center;
+    color: var(--blanco);
+    padding: 0 20px;
+    margin-top: 0px; /* Margen de seguridad para el Header fijo */
+}
+
+.project-hero-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Etiqueta del sector (Estilo Flesan) */
+.project-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--rojo-seguridad);
+    color: var(--blanco);
+    padding: 6px 12px;
+    display: inline-block;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.project-hero h1 {
+    font-size: 36px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+/* ======================================================== */
+/* RESPONSIVE HERO DEL PROYECTO                             */
+/* ======================================================== */
+
+/* Para Celulares y Smartphones (Menos de 768px) */
+@media (max-width: 768px) {
+    .project-hero {
+        height: 250px; /* Reducción de altura proporcional para pantallas verticales */
+        padding: 30px 20px 15px 20px;
+    }
+
+    .project-tag {
+        font-size: 11px; /* Ligeramente más compacto en móviles */
+        padding: 5px 10px;
+        margin-bottom: 12px;
+    }
+
+    .project-hero h1 {
+        font-size: 24px; /* Tamaño clave para evitar que el título largo se desborde o corte feo */
+        line-height: 1.4;
+    }
+}
+
+        /* CONTENEDOR PRINCIPAL DETALLE */
+        section {
+            padding: 20px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+/* ======================================================== */
+/* ESTILOS DETALLE DE OBRA: GRILLA Y PANEL (Base / Escritorio)*/
+/* ======================================================== */
+.main-project-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr; /* Foto grande a la izquierda, panel técnico a la derecha */
+    gap: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    align-items: start; /* Evita que el panel de datos se estire artificialmente hacia abajo */
+}
+
+.main-img img {
+    width: 100%;
+    height: 480px; /* Altura fija ideal para escritorio */
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Panel Técnico de Datos (Estilo Flesan) */
+.tech-data-panel {
+    background-color: var(--gris-fondo);
+    padding: 30px 25px;
+    border-top: 4px solid var(--azul-corporativo);
+    border-radius: 0 0 4px 4px;
+}
+
+.tech-data-panel h2 {
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--azul-corporativo);
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* Filas de la Ficha Técnica */
+.data-row {
+    display: flex;
+    justify-content: space-between; /* Alinea etiqueta a la izquierda y valor a la derecha */
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+.data-row:last-child {
+    border-bottom: none; /* Quita la línea divisoria de la última fila */
+}
+
+.data-label {
+    font-weight: 700;
+    color: var(--azul-corporativo);
+}
+
+.data-value {
+    color: var(--gris-texto);
+    text-align: right;
+    padding-left: 15px; /* Margen de seguridad por si el texto es largo */
+}
+
+/* ======================================================== */
+/* RESPONSIVE DETALLE DE OBRA                               */
+/* ======================================================== */
+
+/* Para Tablets y Laptops medianas (Menos de 992px) */
+@media (max-width: 992px) {
+    .main-project-grid {
+        grid-template-columns: 1fr; /* Colapsa la estructura a una sola columna */
+        gap: 30px;
+    }
+
+    .main-img img {
+        height: 380px; /* Reduce proporcionalmente el alto de la imagen */
+    }
+}
+
+/* Para Celulares y Smartphones (Menos de 768px) */
+@media (max-width: 768px) {
+    .main-project-grid {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        gap: 20px;
+    }
+
+    .main-img img {
+        height: 240px; /* Ajuste óptimo de la imagen para pantallas verticales de celulares */
+    }
+
+    .tech-data-panel {
+        padding: 25px 20px; /* Relleno interno más compacto para pantallas angostas */
+    }
+
+    .tech-data-panel h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .data-row {
+        padding: 12px 0;
+        font-size: 13px; /* Tipografía sutilmente más pequeña para celulares */
+    }
+}
+
+/* ======================================================== */
+/* ESTILOS GALERÍA Y ALCANCE (Base / Escritorio)            */
+/* ======================================================== */
+.project-subgrid-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columnas perfectas en escritorio */
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.project-subgrid-images img {
+    width: 100%;
+    height: 360px; /* Altura física uniforme para que se vea alineado */
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover interactivo estilo portafolio premium */
+.project-subgrid-images img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Bloque de Texto de Descripción */
+.project-description {
+    max-width: 900px; /* Evita líneas de texto demasiado largas y cansadas de leer */
+    margin-bottom: 30px;
+}
+
+.project-description h3 {
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--azul-corporativo);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Detalle de línea roja decorativa bajo el título de alcance */
+.project-description h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--rojo-seguridad);
+}
+
+.project-description p {
+    font-size: 15px;
+    color: var(--gris-texto);
+    line-height: 1.75; /* Interlineado cómodo para lecturas técnicas detalladas */
+    margin-bottom: 20px;
+}
+
+/* ======================================================== */
+/* RESPONSIVE GALERÍA Y ALCANCE                             */
+/* ======================================================== */
+
+/* Para Tablets y Laptops pequeñas (Menos de 992px) */
+@media (max-width: 992px) {
+    .project-subgrid-images {
+        grid-template-columns: repeat(2, 1fr); /* Pasa de 3 a 2 columnas */
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .project-subgrid-images img {
+        height: 200px; /* Reducción ligera de la altura */
+    }
+
+    .project-description h3 {
+        font-size: 22px;
+    }
+}
+
+/* Para Celulares y Smartphones (Menos de 768px) */
+@media (max-width: 768px) {
+    .project-subgrid-images {
+        grid-template-columns: 1fr; /* Colapsa a 1 sola columna vertical */
+        gap: 15px;
+        margin-bottom: 35px;
+    }
+
+    .project-subgrid-images img {
+        height: 190px; /* Altura ideal en pantallas verticales */
+    }
+
+    .project-description {
+        margin-bottom: 40px;
+    }
+
+    .project-description h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .project-description p {
+        font-size: 14px; /* Texto sutilmente más compacto para celulares */
+        line-height: 1.65;
+    }
+}
+
+/* ======================================================== */
+/* ESTILOS OTROS PROYECTOS (Escritorio / Base)              */
+/* ======================================================== */
+.related-projects-section {
+    background-color: var(--gris-fondo);
+    padding: 60px 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.related-title {
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--azul-corporativo);
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+    gap: 30px;
+}
+
+/* Tarjeta enlazada completa */
+.related-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--blanco);
+    border: 1px solid #e2e8f0;
+    text-decoration: none; /* Quita el subrayado por defecto de los enlaces */
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Contenedor de la imagen de fondo */
+.related-img {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+/* Contenedor de la información */
+.related-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.related-info span {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--rojo-seguridad);
+    margin-bottom: 6px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.related-info h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--azul-corporativo);
+    line-height: 1.4;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.related-card:hover .related-info h4 {
+    color: var(--rojo-seguridad); /* El título cambia a rojo al hacer hover en la tarjeta */
+}
+
+/* ======================================================== */
+/* RESPONSIVE OTROS PROYECTOS                               */
+/* ======================================================== */
+
+/* Para Tablets (Menos de 992px) */
+@media (max-width: 992px) {
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas */
+        gap: 20px;
+    }
+}
+
+/* Para Celulares y Smartphones (Menos de 768px) */
+@media (max-width: 768px) {
+    .related-projects-section {
+        padding: 40px 20px; /* Reducción de espaciado general */
+    }
+
+    .related-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center; /* Centrado para mejor estética móvil */
+    }
+
+    .related-grid {
+        grid-template-columns: 1fr; /* 1 sola columna vertical */
+        gap: 20px;
+    }
+
+    .related-img {
+        height: 160px; /* Imagen ligeramente más baja en pantallas angostas */
+    }
+
+    .related-info {
+        padding: 15px; /* Padding interno más ajustado */
+    }
+    
+    .related-info h4 {
+        font-size: 14px;
+    }
+}
+
+/* ========================================== */
+/* ESTILOS BASE DEL FOOTER (Computadora)     */
+/* ========================================== */
+.main-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding-top: 50px;
+    border-top: 3px solid var(--rojo-seguridad);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 20px 45px 20px;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.footer-column p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.footer-services {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-services li {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #cccccc;
+}
+
+.footer-phone {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 15px 0;
+}
+
+.footer-bottom-bar {
+    background-color: #b82c14; /* Tu azul corporativo */
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ========================================== */
+/* ADAPTACIÓN PARA MÓVILES (Celulares)        */
+/* ========================================== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        gap: 35px;             /* Añade separación segura entre cada bloque */
+        text-align: center;    /* Centra los textos para que se vea ordenado en celular */
+        padding-bottom: 35px;
+    }
+
+    .footer-services {
+        display: inline-block; /* Permite alinear la lista en base al centro */
+        text-align: left;      /* Mantiene las viñetas alineadas a la izquierda */
+    }
+
+    .footer-logo img {
+        margin: 15px auto 0 auto; /* Centra el logotipo en móviles */
+        display: block;
+    }
+}
+/* BOTÓN FLOTANTE WHATSAPP CORREGIDO */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #ffffff !important;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .whatsapp-btn i {
+            font-size: 32px !important;
+            line-height: 1;
+            display: block;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+
+        /* Ocultaciones globales por defecto (Para computadoras) */
+        .mobile-only-btn {
+            display: none !important;
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+
+/* ======================================================== */
+        /* RESPONSIVE GENERAL COMBINADO                             */
+        /* ======================================================== */
+
+        /* REGLAS PARA TABLETS Y MÓVILES (Menos de 968px) */
+        @media (max-width: 968px) {
+            /* --- Tus estilos existentes de Contacto --- */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .info-panel {
+                padding: 30px;
+            }
+
+            /* --- NUEVO: Adaptación de Header y Menú Hamburguesa --- */
+.nav-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                height: 70px;
+            }
+
+            .menu-toggle {
+                display: block !important;
+                background: none !important;
+                border: none !important;
+                color: #ffffff !important;
+                font-size: 32px !important;
+                cursor: pointer;
+                z-index: 1002;
+                margin: 0 !important;
+                padding: 0 !important;
+                line-height: 1 !important;
+            }
+
+            nav {
+                display: block !important;
+                position: fixed;
+                top: 0;
+                right: -100%; 
+                width: 75%;
+                height: 100vh;
+                background-color: var(--azul-corporativo);
+                padding: 100px 30px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                z-index: 1001;
+            }
+
+            nav.active {
+                right: 0 !important;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column !important;
+                align-items: flex-start;
+                gap: 25px;
+                list-style: none;
+                padding: 0;
+            }
+
+            nav ul li a {
+                color: #ffffff;
+                font-size: 20px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Control inteligente de botones de cotización */
+            .desktop-only-btn {
+                display: none !important;
+            }
+
+            .mobile-only-btn {
+                display: block !important;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .mobile-only-btn .btn-premium {
+                display: block;
+                text-align: center;
+                width: 100%;
+                padding: 12px;
+                background-color: var(--rojo-seguridad);
+                color: #ffffff;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+
+/* REGLAS PARA CELULARES PEQUEÑOS (Menos de 768px) */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 35px;
+                text-align: center;
+                padding-bottom: 35px;
+            }
+
+            .footer-services {
+                display: inline-block;
+                text-align: left;
+            }
+
+            .footer-logo img {
+                margin: 15px auto 0 auto;
+                display: block;
+            }
+
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .whatsapp-btn i {
+                font-size: 26px !important;
+            }
+        }
+
+        /* REGLAS PARA PANTALLAS CHICAS (Menos de 576px) */
+        @media (max-width: 576px) {
+            .advanced-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .form-panel h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER / NAVEGACIÓN -->
+<header>
+    <div class="nav-container">
+        <div class="logo">GRUPO TELVIR<span>.</span></div>
+        
+        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="NOSOTROS.html">Nosotros</a></li>
+                <li><a href="SERVICIOS.html">Servicios</a></li>
+                <li><a href="PROYECTOS.html">Proyectos</a></li>
+                <li><a href="CONTACTO.html">Contacto</a></li>
+                <li class="mobile-only-btn"><a href="CONTACTO.html" class="btn-premium">Cotizar Proyecto</a></li>
+            </ul>
+        </nav>
+
+        <a href="CONTACTO.html" class="btn-header desktop-only-btn">Cotizar Proyecto</a>
+    </div>
+</header>
+
+    <!-- HERO DEL PROYECTO -->
+    <div class="project-hero">
+        <div class="project-hero-content">
+            <span class="project-tag">Residencial Multifamiliares</span>
+            <h1>Townhouses Zaguán - Edificación Estructural</h1>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE DETALLE DE OBRA -->
+    <section>
+        
+        <div class="container">
+            
+            <!-- GRILLA PRINCIPAL: FOTO PRINCIPAL + FICHA TÉCNICA -->
+            <div class="main-project-grid">
+                
+                <!-- Columna Izquierda: Imagen Principal -->
+                <div class="main-img">
+            <!-- DESCRIPCIÓN TÉCNICA DETALLADA -->
+            <div class="project-description">
+                <h3>Alcance del Proyecto</h3>
+                <p>La construcción del complejo residencial Multifamiliar Townhouses Zaguán implicó la gestión técnica y operativa de un sistema estructural mixto de alta eficiencia. El proyecto abarcó desde los trabajos iniciales de excavación masiva, estabilización de taludes perimetrales e implementación de cimentaciones preparadas para soportar cargas dinámicas y cargas sísmicas normadas.</p>
+                <p>Nuestras cuadrillas civiles ejecutaron con absoluta precisión el levantamiento de muros portantes de albañilería confinada, placas de concreto reforzado, columnas perimetrales y losas aligeradas interconectadas. Cada frente de trabajo se supervisó de acuerdo con altos estándares de seguridad ocupacional y calidad estructural, asegurando una distribución espacial óptima, solidez sismorresistente y acabados de ingeniería civil listos para la fase de arquitectura residencial.</p>
+            </div>
+                </div>
+
+                <!-- Columna Derecha: Cuadro Técnico de Datos -->
+                <div class="tech-data-panel">
+                    <h2>Especificaciones de Obra</h2>
+                    
+                    <div class="data-row">
+                        <span class="data-label">Cliente:</span>
+                        <span class="data-value">Inmobiliaria y Promotora Zaguán</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Ubicación:</span>
+                        <span class="data-value"> Miraflores, Lima</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Año de Ejecución:</span>
+                        <span class="data-value">2026</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Tipo de Contrato:</span>
+                        <span class="data-value">Obra Civil / Estructuras de Concreto</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Estado actual:</span>
+                        <span class="data-value" style="color: rgb(128, 0, 0); font-weight: 700;">En Progreso</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- NUEVA FILA: GALERÍA DE IMÁGENES SECUNDARIAS (REGISTRO FOTOGRÁFICO) -->
+            <div class="project-subgrid-images">
+                <img src="images/Zaguan/01.jpeg" alt="Avance de obra en campo">
+                <img src="images/Zaguan/02.jpg" alt="Detalle de ingeniería estructural">
+                <img src="images/Zaguan/03.jpg" alt="Avance de obra en campo 1">
+                <img src="images/Zaguan/04.jpg" alt="Detalle de ingeniería estructural 2">
+                <img src="images/Zaguan/05.jpg" alt="Acabados o vista lateral 3">
+                <img src="images/Zaguan/06.jpg" alt="Avance de obra en campo 2">
+                <img src="images/Zaguan/07.jpg" alt="Detalle de ingeniería estructural 3">
+                <img src="images/Zaguan/08.jpg" alt="Acabados o vista lateral 4">
+                <img src="images/Zaguan/09.jpg" alt="Detalle de ingeniería estructural 3">
+                <img src="images/Zaguan/10.jpg" alt="Acabados o vista lateral 4">
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN INFERIOR: OTROS PROYECTOS (ESTILO FLESAN) -->
+    <div class="related-projects-section">
+        <div class="container">
+            <h3 class="related-title">Otros Proyectos</h3>
+            
+            <div class="related-grid">
+                
+                <!-- Tarjeta Relacionada 1 -->
+                <a href="ProyectoNiuvida.html" class="related-card">
+                    <div class="related-img" style="background-image: url('images/niuvida-inicio.png');"></div>
+                    <div class="related-info">
+                        <span>Infraestructura Médica</span>
+                        <h4>Centro Especializado C.E. NiuVida</h4>
+                    </div>
+                </a>
+
+                <!-- Tarjeta Relacionada 2 -->
+                <a href="ProyectoPitagoras.html" class="related-card">
+                    <div class="related-img" style="background-image: url('images/pitagoras-inicio.png');"></div>
+                    <div class="related-info">
+                        <span>Infraestructura Educativa</span>
+                        <h4>Colegio Pitágoras - Pabellón Principal</h4>
+                    </div>
+                </a>
+
+                <!-- Tarjeta Relacionada 3 -->
+                <a href="ProyectoVesalio.html" class="related-card">
+                    <div class="related-img" style="background-image: url('images/vesalio.png');"></div>
+                    <div class="related-info">
+                        <span>Infraestructura Médica</span>
+                        <h4>Clínica Vesalio - Ampliación Técnica</h4>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>GRUPO TELVIR<span>.</span></h3>
+            <p>Hacemos realidad los proyectos de construcción para empresas, promotores y proyectos propios, generando la máxima confianza y optimizando su rentabilidad mediante ingeniería de valor y altos estándares de calidad.</p>
+            <div class="footer-logo">
+                <img src="logo.png" alt="Grupo Telvi Logo" onerror="this.style.display='none';">
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>NUESTROS SERVICIOS</h3>
+            <ul class="footer-services">
+                <li>• Arquitectura e Ingeniería</li>
+                <li>• Topografía</li>
+                <li>• Obras Civiles</li>
+                <li>• Estructuras Metálicas</li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>CONTACTO</h3>
+            <p>Si tiene alguna pregunta, cotización o necesita asesoría en su proyecto, no dude en ponerse en contacto con nuestro equipo.</p>
+            <p class="footer-phone">📞 (+51) 991 450 119</p>
+        </div> </div> <div class="footer-bottom-bar">
+        <p>Grupo Telvir © 2026 • Todos los derechos reservados</p>
+    </div>
+</footer>
+<a href="https://wa.me/51991450119?text=Hola%20Grupo%20Telvi,%20solicito%20información%20sobre%20sus%20servicios%20de%20construcción" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                menuToggle.innerHTML = '✕';
+            } else {
+                menuToggle.innerHTML = '☰';
+            }
+        });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+            });
+        });
+    }
+</script>
+</body>
+</html>
