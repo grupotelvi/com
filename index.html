@@ -644,16 +644,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #a0aec0; /* Tono gris sutil corporativo */
-    letter-spacing: 0.5px;
     border: 1px solid #e2e8f0;
-    text-align: center;
-    padding: 15px;
+    
+    /* 1. Reducimos el espacio de la caja para que el logo no se estire */
+    padding: 15px 25px; /* Más padding a los lados para logos horizontales */
+    box-sizing: border-box; /* Asegura que el padding no rompa los 90px de alto */
+    
     filter: grayscale(100%);
+    opacity: 0.7;
     transition: all 0.3s ease;
+}
+
+/* 2. Control estricto del tamaño de la imagen */
+.client-logo-box .client-logo {
+    /* Limitamos el ancho y alto máximo al 80% de la caja blanca */
+    max-width: 100%; 
+    max-height: 100%;
+    
+    /* Mantiene la proporción perfecta del logo sin deformarlo */
+    width: auto;
+    height: auto;
+    object-fit: contain; 
+    
+    transition: transform 0.3s ease;
 }
 
 .client-logo-box:hover {
@@ -662,7 +675,10 @@
     border-color: var(--rojo-seguridad);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
-
+/* Efecto extra: Hace que el logo crezca un poquitito al pasar el mouse */
+.client-logo-box:hover .client-logo {
+    transform: scale(1.05);
+}
 /* ======================================================== */
 /* RESPONSIVE CONFIANZA COMERCIAL                           */
 /* ======================================================== */
@@ -673,17 +689,23 @@
         grid-template-columns: repeat(3, 1fr); /* Pasa a 3 columnas */
         gap: 15px;
     }
+
+    /* 🟢 FUERZA A QUE LOS LOGOS SE VEAN A COLOR EN TABLET Y MÓVIL */
+    .client-logo-box {
+        filter: grayscale(0%) !important; 
+        opacity: 1 !important;
+    }
 }
 
 /* Para Celulares estándar (Menos de 768px) */
 @media (max-width: 768px) {
     .clients-grid {
-        grid-template-columns: repeat(2, 1fr); /* Pasa a un formato limpio de 2 columnas (2x4) */
+        grid-template-columns: repeat(2, 1fr); /* Pasa a formato de 2 columnas */
     }
     
     .client-logo-box {
-        font-size: 13px; /* Reducción mínima de fuente para que no rompa palabras largas */
         height: 80px; /* Un poco más compactas en móvil */
+        padding: 10px 15px; /* Reducimos ligeramente el padding para que quepan bien en pantallas chicas */
     }
 }
 
@@ -694,7 +716,7 @@
     }
 
     .clients-grid {
-        grid-template-columns: 1fr; /* Una caja gigante de logo abajo de la otra */
+        grid-template-columns: 1fr; /* Una caja abajo de la otra */
         gap: 12px;
     }
 }
@@ -1124,14 +1146,30 @@
         <div class="container">
             <h2 class="section-title">Confianza Comercial</h2>
             <div class="clients-grid">
-                <div class="client-logo-box">Colegio Pitágoras</div>
-                <div class="client-logo-box">Policlínico Emmanuel</div>
-                <div class="client-logo-box">Clínica de Ojos Nahui</div>
-                <div class="client-logo-box">Clínica Vesalio</div>
-                <div class="client-logo-box">Clínica Miraflores</div>
-                <div class="client-logo-box">Colegio Magister</div>
-                <div class="client-logo-box">C.E. Niu Vida</div>
-                <div class="client-logo-box">Sectores Privados</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lpitagoras.jpg" alt="Colegio Pitágoras" class="client-logo">
+</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lemmanuel.jpg" alt="Policlínico Emmanuel" class="client-logo">
+</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lnahui.jpg" alt="Clínica de Ojos Nahui" class="client-logo">
+</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lvesalio.jpg" alt="Clínica Vesalio" class="client-logo">
+</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lmiraflores.jpg" alt="Clínica Miraflores" class="client-logo">
+</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lmagister.jpg" alt="Colegio Magister" class="client-logo">
+</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lniuvida.jpg" alt="C.E. Niu Vida" class="client-logo">
+</div>
+<div class="client-logo-box">
+    <img src="images/logos_Lcayetano.jpg" alt="Sectores Privados" class="client-logo">
+</div>
             </div>
         </div>
     </section>
