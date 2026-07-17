@@ -7,213 +7,266 @@
     <style>
         /* RESET & VARIABLES */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        :root {
-            --azul-corporativo: #0a192f;
-            --azul-oscuro: #050c16;
-            --rojo-seguridad: #d9381e;
-            --gris-fondo: #f4f6f9;
-            --gris-texto: #4a5568;
-            --blanco: #ffffff;
-        }
+    :root {
+        --azul-corporativo: #0a192f;
+        --azul-oscuro: #050c16;
+        --rojo-seguridad: #d9381e;
+        --gris-fondo: #f4f6f9;
+        --gris-texto: #4a5568;
+        --blanco: #ffffff;
+    }
 
-        body {
-            background-color: var(--blanco);
-            color: var(--azul-corporativo);
-            line-height: 1.6;
-        }
+    body {
+        background-color: var(--blanco);
+        color: var(--azul-corporativo);
+        line-height: 1.6;
+    }
 
-        /* HEADER & NAVEGACIÓN */
-        header {
-            background-color: var(--azul-corporativo);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--rojo-seguridad);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo {
-            color: var(--blanco);
-            font-weight: 800;
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--rojo-seguridad);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            align-items: center;
-        }
-
-        nav ul li a {
-            color: var(--blanco);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--rojo-seguridad);
-        }
-
-        .btn-header {
-            background-color: var(--rojo-seguridad);
-            color: var(--blanco);
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-header:hover {
-            background-color: #b82c14;
-        }
-
-        /* HERO SECTION */
-/* ======================================================== */
-/* ESTILOS HERO (Para Computadoras / Escritorio)             */
-/* ======================================================== */
-.hero {
-    background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(5, 12, 22, 0.9)), 
-                url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200') center/cover no-repeat;
-    height: 100vh; /* Ocupa el alto total de la pantalla */
-    min-height: 600px; /* Evita que se rompa si la pantalla es muy pequeña */
+    /* ======================================================== */
+    /* HEADER & NAVEGACIÓN (CAMBIOS INDEPENDIENTES)             */
+    /* ======================================================== */
+    header {
+        /* Puedes cambiar este color directamente sin alterar el Hero u otras secciones */
+        background-color: #ffffff; 
+        
+        position: fixed;
+        width: 100%;
+        height: 75px; /* Altura fija para control de espacio */
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        
+        /* Borde inferior personalizado e independiente */
+        border-bottom: 3px solid #e03e22; 
+        
+        /* Sombra paralela para separar visualmente el menú del banner */
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4); 
+        
+        display: flex;
+        align-items: center;
+    }
+/* --- ESTILOS DEL LOGO EN EL HEADER (ESCRITORIO) --- */
+.logo-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--blanco);
-    padding: 0 20px;
-    margin-top: 60px; /* Espacio para que no lo tape el Header fijo */
-    text-align: center;
-}
-
-.hero-content {
-    max-width: 800px;
-    width: 100%;
-}
-
-.hero h1 {
-    font-size: 48px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 18px;
-    color: #ccd6f6;
-    margin-bottom: 35px;
-}
-
-.hero-btns {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Estilos base de los botones dentro del Hero */
-.hero-btns a {
-    padding: 15px 30px;
+    height: 100%;
     text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    text-align: center;
 }
 
+.header-logo {
+    max-height: 45px;  /* Controla qué tan grande se verá en computadoras */
+    width: auto;       /* Mantiene la proporción perfecta de ancho */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
 
-/* ======================================================== */
-/* RESPONSIVE HERO (Para Celulares y Pantallas Pequeñas)     */
-/* ======================================================== */
-@media (max-width: 768px) {
+.header-logo:hover {
+    transform: scale(1.02); /* Efecto sutil al pasar el mouse */
+}
+    .nav-container {
+        max-width: 1400px; /* Expandido de 1200px a 1400px para llevar elementos a las esquinas */
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between; /* Empuja logo a la izquierda y botón a la derecha */
+        align-items: center;
+        padding: 0 40px; /* Espaciado de seguridad en los bordes de la pantalla */
+    }
+
+    /* LOGO */
+    .logo {
+        color: #ffffff; /* Texto del logo siempre blanco */
+        font-weight: 800;
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+
+    .logo span {
+        color: #e03e22; /* Punto del logo independiente */
+    }
+
+    /* ENLACES DEL MENÚ */
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px; 
+        align-items: center;
+    }
+
+    nav ul li a {
+        color: #050c16; /* Color independiente para las letras del menú */
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #e03e22; /* Color de interacción exclusivo */
+    }
+
+    /* BOTÓN HEADER */
+    .btn-header {
+        background-color: #e03e22;
+        color: #ffffff;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .btn-header:hover {
+        background-color: #b82c14;
+    }
+
+    .menu-toggle {
+        display: none; /* Oculto en escritorio por defecto */
+    }
+
+    /* ======================================================== */
+    /* HERO SECTION (MANTIENE SUS PROPIOS COLORES GLOBALES)     */
+    /* ======================================================== */
     .hero {
-        height: auto; /* Permite que la sección crezca si el texto es largo */
-        padding: 100px 20px 80px 20px; /* Más espacio arriba y abajo en móviles */
+        background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(5, 12, 22, 0.9)), 
+                    url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200') center/cover no-repeat;
+        height: 100vh; 
+        min-height: 600px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--blanco);
+        padding: 0 20px;
+        margin-top: 75px; /* Ajustado exactamente al alto del menú para que no se superpongan */
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        width: 100%;
     }
 
     .hero h1 {
-        font-size: 32px; /* Reducimos el tamaño del título principal */
-        line-height: 1.3;
-        margin-bottom: 15px;
+        font-size: 48px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        line-height: 1.2;
     }
 
     .hero p {
-        font-size: 15px; /* Texto un poco más pequeño y legible en móvil */
-        margin-bottom: 30px;
+        font-size: 18px;
+        color: #ccd6f6;
+        margin-bottom: 35px;
     }
 
     .hero-btns {
-        flex-direction: column; /* Los botones se apilan uno abajo del otro */
-        gap: 15px;
-        width: 100%;
-        max-width: 320px; /* Limita el ancho de los botones en pantallas verticales */
-        margin: 0 auto; /* Centra el bloque de botones */
+        display: flex;
+        justify-content: center;
+        gap: 20px;
     }
 
     .hero-btns a {
-        width: 100%; /* Cada botón ocupa todo el ancho disponible de su contenedor */
-        padding: 14px 20px;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: var(--rojo-seguridad);
+        color: var(--blanco);
+    }
+
+    .btn-primary:hover {
+        background-color: #b82c14;
+    }
+
+    .btn-secondary {
+        border: 2px solid var(--blanco);
+        color: var(--blanco);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--blanco);
+        color: var(--azul-corporativo);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .nav-container {
+            padding: 0 20px; /* Reduce un poco el margen lateral en móviles */
+        }
+        
+.menu-toggle {
+            display: block !important;
+            background: none !important;
+            border: none !important;
+            color: #ffffff !important; /* <--- Pon el color que quieras aquí y deja el !important */
+            font-size: 24px !important;
+            cursor: pointer !important;
+        }
+        
+        nav {
+            display: none; /* Implementar lógica de activación clásica según tu diseño móvil */
+        }
+
+        .hero {
+            height: auto; 
+            padding: 100px 20px 80px 20px; 
+            margin-top: 75px;
+        }
+
+        .hero h1 {
+            font-size: 32px; 
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 15px; 
+            margin-bottom: 30px;
+        }
+
+        .hero-btns {
+            flex-direction: column; 
+            gap: 15px;
+            width: 100%;
+            max-width: 320px; 
+            margin: 0 auto; 
+        }
+
+        .hero-btns a {
+            width: 100%; 
+            padding: 14px 20px;
+        }
+    }
+/* --- ADAPTACIÓN PARA RESPONSIVE (MÓVILES) --- */
+@media (max-width: 768px) {
+    .header-logo {
+        max-height: 45px; /* Se hace un poco más pequeño en celulares para que no sature */
+    }
+    
+    /* Centrado opcional: si en tu diseño móvil el botón de menú flotara 
+       a la derecha y quisieras mantener el logo con aire a la izquierda */
+    .nav-container {
+        padding: 10px 15px; /* Reduce el relleno en móviles para ganar espacio */
     }
 }
-        .btn-primary {
-            background-color: var(--rojo-seguridad);
-            color: var(--blanco);
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: #b82c14;
-        }
-
-        .btn-secondary {
-            border: 2px solid var(--blanco);
-            color: var(--blanco);
-            padding: 13px 28px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--blanco);
-            color: var(--azul-corporativo);
-        }
 
         /* SECCIONES GENÉRICAS */
         section {
@@ -1201,7 +1254,7 @@
             <h3>GRUPO TELVIR<span>.</span></h3>
             <p>Hacemos realidad los proyectos de construcción para empresas, promotores y proyectos propios, generando la máxima confianza y optimizando su rentabilidad mediante ingeniería de valor y altos estándares de calidad.</p>
             <div class="footer-logo">
-                <img src="images/logo.png" alt="Grupo Telvir Logo" onerror="this.style.display='none';">
+                <img src="images/Logo.png" alt="Grupo Telvir Logo" onerror="this.style.display='none';">
             </div>
         </div>
 
