@@ -190,6 +190,18 @@ margin: 0;
         font-size: 28px; /* El tamaño de la fuente baja para que títulos largos entren bien */
     }
 }
+        /* --- ADAPTACIÓN PARA RESPONSIVE (MÓVILES) --- */
+@media (max-width: 768px) {
+    .header-logo {
+        max-height: 45px; /* Se hace un poco más pequeño en celulares para que no sature */
+    }
+    
+    /* Centrado opcional: si en tu diseño móvil el botón de menú flotara 
+       a la derecha y quisieras mantener el logo con aire a la izquierda */
+    .nav-container {
+        padding: 10px 15px; /* Reduce el relleno en móviles para ganar espacio */
+    }
+}
         /* SECCIONES GENÉRICAS */
         section {
             padding: 80px 20px;
