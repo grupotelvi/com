@@ -550,6 +550,26 @@
 /* ========================================== */
 /* ESTILOS BASE DEL FOOTER (Computadora)     */
 /* ========================================== */
+/* Contenedor del logo en el footer */
+.footer-logo {
+    margin-top: 15px; /* Separa el logo del texto de arriba */
+    display: block;   /* Asegura que se mantenga debajo como bloque */
+}
+
+/* Control del tamaño de la imagen del logo */
+.footer-logo img {
+    max-width: 150px; /* Controla el ancho máximo para que se vea pequeño */
+    height: auto;     /* Mantiene la proporción original y evita que se deforme */
+    object-fit: contain;
+    opacity: 0.9;     /* Opcional: le da un tono sutil que combina con el footer */
+}
+
+/* Centrado automático solo en pantallas móviles */
+@media (max-width: 768px) {
+    .footer-logo img {
+        margin: 0 auto; /* Centra el logo cuando todo el texto se alinea al centro */
+    }
+}
 .main-footer {
     background-color: #000000;
     color: #ffffff;
@@ -923,7 +943,7 @@
             <h3>GRUPO TELVIR<span>.</span></h3>
             <p>Hacemos realidad los proyectos de construcción para empresas, promotores y proyectos propios, generando la máxima confianza y optimizando su rentabilidad mediante ingeniería de valor y altos estándares de calidad.</p>
             <div class="footer-logo">
-                <img src="logo.png" alt="Grupo Telvir Logo" onerror="this.style.display='none';">
+                <img src="images/Logo.png" alt="Grupo Telvir Logo" onerror="this.style.display='none';">
             </div>
         </div>
 
