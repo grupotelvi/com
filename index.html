@@ -486,6 +486,50 @@ margin: 0;
     }
 }
 /* ======================================================== */
+/* BOTÓN "VER MÁS" - VERSIÓN ESCRITORIO (CORREGIDO)         */
+/* ======================================================== */
+.portfolio-actions {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;      
+    margin-top: 50px; 
+    
+    /* --- SOLUCIÓN AL CENTRADO --- */
+    width: 100%;             
+    clear: both;             /* Evita interferencias con la grilla de arriba */
+    margin-left: auto;       /* Centrado de emergencia por si el contenedor es Flex */
+    margin-right: auto;      /* Centrado de emergencia por si el contenedor es Flex */
+}
+
+.btn-more-projects {
+    display: inline-block;   
+    background-color: #e03e22; 
+    color: #ffffff;
+    padding: 15px 38px; 
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(224, 62, 34, 0.25);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efectos exclusivos de escritorio (Hover con mouse) */
+.btn-more-projects:hover {
+    background-color: #b82c14; 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 20px rgba(184, 44, 20, 0.4);
+}
+
+.btn-more-projects:active {
+    transform: translateY(-1px);
+}
+/* ======================================================== */
 /* ESTILOS PORTAFOLIO / PROYECTOS (Escritorio / Base)       */
 /* ======================================================== */
 #proyectos {
@@ -1153,6 +1197,9 @@ margin: 0;
                     <span class="sector-tag">Garantía Integral</span>
                 </div>
             </div>
+            <div class="portfolio-actions">
+                <a href="#" class="btn-more-projects">Ver más obras</a>
+            </div>
         </div>
     </section>
 
@@ -1188,6 +1235,9 @@ margin: 0;
                         <a href="ProyectoZaguan.html" class="btn-project">Ficha Técnica</a>
                     </div>
                 </div>
+            </div>
+            <div class="portfolio-actions">
+                <a href="PROYECTOS.html" class="btn-more-projects">Ver más obras</a>
             </div>
         </div>
     </section>
